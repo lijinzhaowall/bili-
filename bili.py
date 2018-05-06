@@ -28,7 +28,7 @@ def onepage(list):
         x = len(web_data['data']['item']['pictures'])
         for i in range(0, x):
             img_src = web_data['data']['item']['pictures'][i]['img_src']       #图链接
-            if collect >= 5:
+            if collect >= 5:                                                   #过滤条件
                 with lock:
                     print('成功：{}'.format(list))
                     name = str(img_name) + '-' + str(collect) + '-'+ str(like) + '@' + str(up_name) + '-' + str(i)
@@ -38,12 +38,12 @@ def onepage(list):
         print("lost:{}".format(list))
         pass
 
-for i in range(200,384):                                                      #多线程开始
+for i in range(111,384):                                                     #起始页面传入id，b站到18/5大概到3900000                                           
     begin = i*10000
     end = begin + 10000
     urls = ["https://api.vc.bilibili.com/link_draw/v1/doc/detail?doc_id={}".format(j)
             for j in range(begin, end)]
-    with futures.ThreadPoolExecutor(64) as executor:
+    with futures.ThreadPoolExecutor(64) as executor:                         #多线程开始
         executor.map(onepage, urls)
 
 
