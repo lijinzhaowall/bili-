@@ -1,2 +1,3 @@
-# bili-b站相簿爬虫    python3+windows
+# bili-b站相簿爬虫    python3
 可修改过滤条件
+需要手动创建d盘bili文件夹或者在代码中修改存储地址
